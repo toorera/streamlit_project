@@ -22,8 +22,9 @@ sns.countplot(data=df, x=selected_option)
 st.pyplot(fig)
 
 st.success('### Relationship Heatmap')
+numeric_data = df.select_dtypes(include=[int, float])
 fig, ax = plt.subplots(figsize=(10, 8))
-sns.heatmap(df.corr(), annot=True, fmt='.2f', cmap='coolwarm', ax=ax)
+sns.heatmap(numeric_data.corr(), annot=True, fmt='.2f', cmap='coolwarm', ax=ax)
 st.pyplot(fig)
 
 st.success('### Distribution of Exited Column (i.e. the target column)')
