@@ -13,10 +13,13 @@ st.success('### Taking a cursory look')
 st.write(df.head())
 st.write('No Of Rows and Columns')
 st.write(df.shape)
+st.success('#### Checking the types of data in the dataset')
+if st.button('View'):
+    st.write(df.dtypes)
 
 
 options = ['Gender', 'Geography','Complain', 'Tenure', 'Card Type', 'HasCrCard','Satisfaction Score']
-selected_option = st.selectbox('Distribution of some key features', options)
+selected_option = st.selectbox('#### Distribution of some key features', options)
 fig, ax = plt.subplots(figsize=(10, 8))
 sns.countplot(data=df, x=selected_option)
 st.pyplot(fig)
@@ -44,7 +47,7 @@ st.pyplot(fig)
 
 churn_rate = df[df['Exited']==1]
 new_options = ['Gender', 'Geography','Complain', 'Tenure', 'Card Type', 'Satisfaction Score','HasCrCard']
-selected_option = st.selectbox('**Select an option to show distribution of Exits per key feature:**', new_options)
+selected_option = st.selectbox('#### Select an option to show distribution of Exits per key feature', new_options)
 fig, ax = plt.subplots(figsize=(10, 8))
 sns.countplot(data=churn_rate, x=selected_option)
 st.pyplot(fig)

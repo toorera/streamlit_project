@@ -13,7 +13,7 @@ df['card_type_code'] = df['Card Type'].astype('category').cat.codes
 df['geography_code'] = df['Geography'].astype('category').cat.codes
 df['gender_code'] = df['Gender'].astype('category').cat.codes
 
-new_col = df[['Geography','Gender','Card Type','card_type_code','geography_code','gender_code']]
+new_col = df[['geography_code','gender_code','card_type_code','card_type_code','geography_code','gender_code']]
 
 col_rearrange = [col for col in df.columns if col != 'Exited'] + ['Exited']
 df = df.reindex(columns=col_rearrange)
@@ -33,14 +33,7 @@ upsampled.index = range(0, upsampled.shape[0], 1)
 
 
 
-
-
-
-
-
-
-
-p = st.multiselect('Predictors', predictors, placeholder='Select Feature',default='Age')
+p = st.multiselect('#### Predictors', predictors, placeholder='Select Feature',default='Age')
     
 st.success('Accuracy Score')
 x = upsampled[p]
